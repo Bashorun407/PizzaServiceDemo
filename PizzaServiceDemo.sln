@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A5ED2DB5-71E4-442B-99C2-00A3D4503276}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{FCC8699F-1759-4273-9746-B00081080C13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{51F13388-C5CC-49BE-A422-BC95F37E335D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E2E6A3F2-1065-419F-8062-2FD6112DEA21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{85B3DA74-D30F-4E2D-B13A-D3C0089AB432}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Domain", "src\backend\Core\PizzaService.Domain\PizzaService.Domain.csproj", "{1D46D950-94AC-40E1-B15F-627B458B25CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Application", "src\backend\Core\PizzaService.Application\PizzaService.Application.csproj", "{364B5EA1-DE7F-4493-A480-626B34CBA688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Persistence", "src\backend\Infrastructure\PizzaService.Persistence\PizzaService.Persistence.csproj", "{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.WebApi", "src\backend\Presentation\PizzaService.WebApi\PizzaService.WebApi.csproj", "{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D46D950-94AC-40E1-B15F-627B458B25CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D46D950-94AC-40E1-B15F-627B458B25CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D46D950-94AC-40E1-B15F-627B458B25CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D46D950-94AC-40E1-B15F-627B458B25CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{364B5EA1-DE7F-4493-A480-626B34CBA688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364B5EA1-DE7F-4493-A480-626B34CBA688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364B5EA1-DE7F-4493-A480-626B34CBA688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364B5EA1-DE7F-4493-A480-626B34CBA688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCC8699F-1759-4273-9746-B00081080C13} = {A5ED2DB5-71E4-442B-99C2-00A3D4503276}
+		{51F13388-C5CC-49BE-A422-BC95F37E335D} = {FCC8699F-1759-4273-9746-B00081080C13}
+		{E2E6A3F2-1065-419F-8062-2FD6112DEA21} = {FCC8699F-1759-4273-9746-B00081080C13}
+		{85B3DA74-D30F-4E2D-B13A-D3C0089AB432} = {FCC8699F-1759-4273-9746-B00081080C13}
+		{1D46D950-94AC-40E1-B15F-627B458B25CA} = {51F13388-C5CC-49BE-A422-BC95F37E335D}
+		{364B5EA1-DE7F-4493-A480-626B34CBA688} = {51F13388-C5CC-49BE-A422-BC95F37E335D}
+		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5} = {E2E6A3F2-1065-419F-8062-2FD6112DEA21}
+		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5} = {85B3DA74-D30F-4E2D-B13A-D3C0089AB432}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0826CD2-872D-4ADD-BFDB-8A04B51D7652}
+	EndGlobalSection
+EndGlobal
