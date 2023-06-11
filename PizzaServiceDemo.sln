@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{85B3DA74-D30F-4E2D-B13A-D3C0089AB432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Domain", "src\backend\Core\PizzaService.Domain\PizzaService.Domain.csproj", "{1D46D950-94AC-40E1-B15F-627B458B25CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService.Domain", "src\backend\Core\PizzaService.Domain\PizzaService.Domain.csproj", "{1D46D950-94AC-40E1-B15F-627B458B25CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Application", "src\backend\Core\PizzaService.Application\PizzaService.Application.csproj", "{364B5EA1-DE7F-4493-A480-626B34CBA688}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService.Application", "src\backend\Core\PizzaService.Application\PizzaService.Application.csproj", "{364B5EA1-DE7F-4493-A480-626B34CBA688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.Persistence", "src\backend\Infrastructure\PizzaService.Persistence\PizzaService.Persistence.csproj", "{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService.Persistence", "src\backend\Infrastructure\PizzaService.Persistence\PizzaService.Persistence.csproj", "{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService.WebApi", "src\backend\Presentation\PizzaService.WebApi\PizzaService.WebApi.csproj", "{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService.WebApi", "src\backend\Presentation\PizzaService.WebApi\PizzaService.WebApi.csproj", "{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "src\backend\Core\LoggerService\LoggerService.csproj", "{01C19177-5BDB-4752-B552-D8740E905FD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C19177-5BDB-4752-B552-D8740E905FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C19177-5BDB-4752-B552-D8740E905FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C19177-5BDB-4752-B552-D8740E905FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C19177-5BDB-4752-B552-D8740E905FD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{364B5EA1-DE7F-4493-A480-626B34CBA688} = {51F13388-C5CC-49BE-A422-BC95F37E335D}
 		{4BE5B9A2-70F1-46EB-8C84-6E61E48C3AF5} = {E2E6A3F2-1065-419F-8062-2FD6112DEA21}
 		{6E0D6FE6-E6BE-4F07-81D4-AAE8B9C43BF5} = {85B3DA74-D30F-4E2D-B13A-D3C0089AB432}
+		{01C19177-5BDB-4752-B552-D8740E905FD7} = {51F13388-C5CC-49BE-A422-BC95F37E335D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0826CD2-872D-4ADD-BFDB-8A04B51D7652}
