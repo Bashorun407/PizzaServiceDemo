@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\..\Infrastructure\PizzaService.Persistence\PizzaService.Persistence.csproj" />
   </ItemGroup>
 

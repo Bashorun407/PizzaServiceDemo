@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "PizzaService.Persistence": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:56499;http://localhost:56504"
+    }
+  }
+}
