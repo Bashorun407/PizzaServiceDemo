@@ -1,15 +1,16 @@
-﻿using PizzaService.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaService.Domain.Entities
+namespace PizzaService.Application.DTOs.DtoForCreation
 {
-    public class Customer : BaseEntity
+    public class CustomerDtoForUpdate
     {
+        public int Id { get; set; }
+
         [MaxLength(25, ErrorMessage = "Maximum length for name is 25 characters")]
         [Required]
         public string? Customer_FirstName { get; set; }
