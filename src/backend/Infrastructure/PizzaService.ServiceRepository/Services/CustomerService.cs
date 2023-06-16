@@ -26,24 +26,35 @@ namespace PizzaService.ServiceRepository.Services
             _mapper = mapper;
         }
 
-        public void CreateCustomer(CustomerDtoForCreation customerDto)
+        public async Task<CustomerDtoForDisplay> CreateCustomer(CustomerDtoForCreation customerDto)
         {
-            var CustomerEntity = _mapper.Map<Customer>(customerDto);
+            var customerEntity = _mapper.Map<Customer>(customerDto);
+            _repository.customerRepository.CreateCustomer(customerEntity);
+           await _repository.SaveAsync();
+
+            var customerToReturn = _mapper.Map<CustomerDtoForDisplay>(customerEntity);
+
+            return customerToReturn;
         }
+
 
         public void DeleteCustomer(int id, bool trackChanges)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CustomerDtoForDisplay>> GetAllCustomersAsync(bool trackChanges)
+        public async Task<IEnumerable<CustomerDtoForDisplay>> GetAllCustomersAsync(bool trackChanges)
         {
-            throw new NotImplementedException();
+            var getCustomersEntities = await _repository.customerRepository.GetAllAsync(trackChanges);
+            var customerEntities = _mapper.Map<IEnumerable<CustomerDtoForDisplay>>(getCustomersEntities);
+            return customerEntities;
         }
 
-        public Task<CustomerDtoForDisplay> GetCustomersAsync(string phoneNumber, bool trackChanges)
+        public async Task<CustomerDtoForDisplay> GetCustomersAsync(string phoneNumber, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var getCustomer = await _repository.customerRepository.GetByPhoneNumberAsync(phoneNumber, trackChanges);
+            var customer = _mapper.Map<CustomerDtoForDisplay>(getCustomer);
+            return customer;
         }
 
         public void UpdateCustomer(string phoneNumber, CustomerDtoForUpdate customer)
@@ -52,6 +63,11 @@ namespace PizzaService.ServiceRepository.Services
         }
 
         public void UpdateCustomer(int id, CustomerDtoForUpdate customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<CustomerDtoForDisplay> ICustomerService.UpdateCustomer(int id, CustomerDtoForUpdate customer)
         {
             throw new NotImplementedException();
         }
