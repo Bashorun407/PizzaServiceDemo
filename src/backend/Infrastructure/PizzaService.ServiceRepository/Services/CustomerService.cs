@@ -2,6 +2,7 @@
 using PizzaService.Application.Common;
 using PizzaService.Application.DTOs.DtoForCreation;
 using PizzaService.Application.DTOs.DtoForDisplay;
+using PizzaService.Domain.Entities;
 using PizzaService.ServiceContracts.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,9 @@ namespace PizzaService.ServiceRepository.Services
             _mapper = mapper;
         }
 
-        public void CreateCustomer(CustomerDtoForCreation customer)
+        public void CreateCustomer(CustomerDtoForCreation customerDto)
         {
-            throw new NotImplementedException();
+            var CustomerEntity = _mapper.Map<Customer>(customerDto);
         }
 
         public void DeleteCustomer(int id, bool trackChanges)

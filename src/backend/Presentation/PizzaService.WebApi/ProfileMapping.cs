@@ -13,6 +13,14 @@ namespace PizzaService.WebApi
             CreateMap<CustomerDtoForCreation, Customer>();
             CreateMap<CustomerDtoForUpdate, Customer>();
 
+            CreateMap<Order, OrderDtoForDisplay>();
+            CreateMap<OrderDtoForCreation, Order>();
+            CreateMap<OrderDtoForUpdate, Order>();
+
+            CreateMap<Pizza,  PizzaDtoForDisplay>();
+            CreateMap<PizzaDtoForCreation, Pizza>();
+            CreateMap<PizzaDtoForUpdate, Pizza>();
+
         }
     }
 }
