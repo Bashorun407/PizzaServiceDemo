@@ -13,7 +13,7 @@ namespace PizzaService.ServiceContracts.Interfaces
         Task<IEnumerable<CustomerDtoForDisplay>> GetAllCustomersAsync(bool trackChanges);
         Task<CustomerDtoForDisplay> GetCustomersAsync(string phoneNumber, bool trackChanges);
         Task<CustomerDtoForDisplay> CreateCustomer(CustomerDtoForCreation customer);
-        Task<CustomerDtoForDisplay> UpdateCustomer(int id, CustomerDtoForUpdate customer);
+        void UpdateCustomer(int id, CustomerDtoForUpdate customer);
         void DeleteCustomer(int id, bool trackChanges);
     }
 }

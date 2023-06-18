@@ -12,8 +12,8 @@ namespace PizzaService.ServiceContracts.Interfaces
         Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersAsync(bool trackChanges);
         Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersByDate(DateTime date, bool trackChanges);
         Task<OrderDtoForDisplay> GetOrderByIdAsync(int id, bool trackChanges);
-        void CreateOrder(OrderDtoForCreation order);
-        void UpdateOrder(OrderDtoForDisplay order);
+        Task<OrderDtoForDisplay> CreateOrder(OrderDtoForCreation order);
+        void UpdateOrder(int id, OrderDtoForDisplay order);
         void DeleteOrder(int id, bool trackChanges);
     }
 }

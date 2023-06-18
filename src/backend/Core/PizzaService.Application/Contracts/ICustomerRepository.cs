@@ -11,6 +11,7 @@ namespace PizzaService.Application.Contracts
     {
         Task<IEnumerable<Customer>> GetAllAsync(bool trackChanges);
         Task<Customer> GetByPhoneNumberAsync(string phoneNumber, bool trackChanges);
+        Task<Customer> GetByIdAsync(int id, bool trackChanges);
         void CreateCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
         void DeleteCustomer(Customer customer);

@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\PizzaService.Domain\PizzaService.Domain.csproj" />
+    <ProjectReference Include="..\PizzaService.Persistence\PizzaService.Persistence.csproj" />
     <ProjectReference Include="..\PizzaService.ServiceContracts\PizzaService.ServiceContracts.csproj" />
   </ItemGroup>
 

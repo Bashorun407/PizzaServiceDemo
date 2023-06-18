@@ -40,6 +40,12 @@ namespace PizzaService.Persistence.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<Customer> GetByIdAsync(int id, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.Id ==id, trackChanges)
+                .FirstOrDefaultAsync();
+        }
+
         public void UpdateCustomer(Customer customer)
         {
             Update(customer);

@@ -12,7 +12,7 @@ namespace PizzaService.ServiceContracts.Interfaces
         Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaAsync(bool trackChanges);
         Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaBySizeAsync(double size, bool trackChanges);
         Task<PizzaDtoForDisplay> GetPizzaById(int id, bool trackChanges);
-        void CreatePizza(PizzaDtoForCreation pizza);
+        Task<PizzaDtoForDisplay> CreatePizza(PizzaDtoForCreation pizza);
         void UpdatePizza(int id, PizzaDtoForUpdate pizza);
         void DeletePizza(int id, bool trackChanges);
     }

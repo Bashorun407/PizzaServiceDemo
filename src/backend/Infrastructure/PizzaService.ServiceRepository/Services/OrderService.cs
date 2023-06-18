@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using PizzaService.Application.Common;
 using PizzaService.Application.DTOs.DtoForCreation;
+using PizzaService.Application.DTOs.DtoForDisplay;
+using PizzaService.Domain.Entities;
 using PizzaService.ServiceContracts.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,32 +25,59 @@ namespace PizzaService.ServiceRepository.Services
             _mapper = mapper;
         }
 
-        public void CreateOrder(OrderDtoForCreation order)
+        public async Task<OrderDtoForDisplay> CreateOrder(OrderDtoForCreation order)
         {
-            throw new NotImplementedException();
+            var orderDetails = _mapper.Map<Order>(order);
+            _repository.orderRepository.CreateOrder(orderDetails);
+            _repository.SaveAsync();
+
+            var orderToReturn = _mapper.Map<OrderDtoForDisplay>(orderDetails);
+            return orderToReturn;
         }
 
-        public void DeleteOrder(int id, bool trackChanges)
+        public  async void DeleteOrder(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var orderToDelete = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
+
+            _repository.orderRepository.DeleteOrder(orderToDelete);
+            
         }
 
-        public Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersAsync(bool trackChanges)
+        public async Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersAsync(bool trackChanges)
         {
-            throw new NotImplementedException();
+            var orderEntity = _repository.orderRepository.GetAllAsync(trackChanges);
+
+            var orders = _mapper.Map<OrderDtoForDisplay>(orderEntity);
+            return (IEnumerable<OrderDtoForDisplay>) orders;
         }
 
-        public Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersByDate(DateTime date, bool trackChanges)
+        public async Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersByDate(DateTime date, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var orderEntity = _repository.orderRepository.GetByOrderDateAsync(date, trackChanges);
+
+            var orders = _mapper.Map<OrderDtoForDisplay>(orderEntity);
+            return (IEnumerable<OrderDtoForDisplay>)orders;
         }
 
-        public Task<OrderDtoForDisplay> GetOrderByIdAsync(int id, bool trackChanges)
+        public async Task<OrderDtoForDisplay> GetOrderByIdAsync(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var orderEntity = _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
+            var orderToReturn = _mapper.Map<OrderDtoForDisplay>(orderEntity);
+
+            return orderToReturn;
         }
 
-        public void UpdateOrder(OrderDtoForDisplay order)
+        public async void UpdateOrder(int id, OrderDtoForDisplay order, bool trackChanges)
+        {
+            var orderEntity = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
+            var orderDto = _mapper.Map<Order>(order);
+            orderEntity.ModifiedBy = orderDto.ModifiedBy;
+
+           await _repository.SaveAsync();
+
+        }
+
+        public void UpdateOrder(int id, OrderDtoForDisplay order)
         {
             throw new NotImplementedException();
         }

@@ -38,16 +38,18 @@ namespace PizzaService.ServiceRepository.Services
         }
 
 
-        public void DeleteCustomer(int id, bool trackChanges)
+        public async void DeleteCustomer(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var customerDelete = await _repository.customerRepository.GetByIdAsync(id, trackChanges);
+            _repository.customerRepository.DeleteCustomer(customerDelete);
+
         }
 
         public async Task<IEnumerable<CustomerDtoForDisplay>> GetAllCustomersAsync(bool trackChanges)
         {
             var getCustomersEntities = await _repository.customerRepository.GetAllAsync(trackChanges);
             var customerEntities = _mapper.Map<IEnumerable<CustomerDtoForDisplay>>(getCustomersEntities);
-            return customerEntities;
+            return (IEnumerable<CustomerDtoForDisplay>)customerEntities;
         }
 
         public async Task<CustomerDtoForDisplay> GetCustomersAsync(string phoneNumber, bool trackChanges)
@@ -57,17 +59,31 @@ namespace PizzaService.ServiceRepository.Services
             return customer;
         }
 
-        public void UpdateCustomer(string phoneNumber, CustomerDtoForUpdate customer)
+
+        public async Task<CustomerDtoForDisplay> UpdateCustomer(int id, CustomerDtoForUpdate customer, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var CustomerDetail = await _repository.customerRepository.GetByIdAsync(id, trackChanges);
+            CustomerDetail.Customer_PhoneNumber = customer.Customer_PhoneNumber;
+            CustomerDetail.Customer_Email = customer.Customer_Email;
+            CustomerDetail.Customer_Address = customer.Customer_Address;
+
+            var customerDisplay = _mapper.Map<CustomerDtoForDisplay>(CustomerDetail);
+            return customerDisplay;
         }
 
-        public void UpdateCustomer(int id, CustomerDtoForUpdate customer)
+        public async Task<CustomerDtoForDisplay> UpdateCustomer(string phoneNumber, CustomerDtoForUpdate customer, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var customerDetail = await _repository.customerRepository.GetByPhoneNumberAsync(phoneNumber, trackChanges);
+            customerDetail.Customer_PhoneNumber = customer.Customer_PhoneNumber;
+            customerDetail.Customer_Email= customer.Customer_Email;
+            customerDetail.Customer_Address= customer.Customer_Address;
+
+            CustomerDtoForDisplay customerDisplay = _mapper.Map<CustomerDtoForDisplay>(customerDetail);
+            return customerDisplay;
         }
 
-        Task<CustomerDtoForDisplay> ICustomerService.UpdateCustomer(int id, CustomerDtoForUpdate customer)
+
+        void ICustomerService.UpdateCustomer(int id, CustomerDtoForUpdate customer)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PizzaService.Application.Common;
 using PizzaService.Application.DTOs.DtoForCreation;
+using PizzaService.Domain.Entities;
 using PizzaService.ServiceContracts.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,29 +24,54 @@ namespace PizzaService.ServiceRepository.Services
             _mapper = mapper;
         }
 
-        public void CreatePizza(PizzaDtoForCreation pizza)
+        public async Task<PizzaDtoForDisplay> CreatePizza(PizzaDtoForCreation pizza)
         {
-            throw new NotImplementedException();
+            var pizzaDetails = _mapper.Map<Pizza>(pizza);
+            _repository.pizzaRepository.CreatePizza(pizzaDetails);
+            _repository.SaveAsync();
+
+            var pizzaToReturn = _mapper.Map<PizzaDtoForDisplay>(pizzaDetails);
+            return pizzaToReturn;
         }
 
-        public void DeletePizza(int id, bool trackChanges)
+        public async void DeletePizza(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var pizzaToDelete = await _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
+
+            _repository.pizzaRepository.DeletePizza(pizzaToDelete);
         }
 
-        public Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaAsync(bool trackChanges)
+        public async Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaAsync(bool trackChanges)
         {
-            throw new NotImplementedException();
+            var pizzaEntity = _repository.pizzaRepository.GetAllAsync(trackChanges);
+
+            var pizzas = _mapper.Map<PizzaDtoForDisplay>(pizzaEntity);
+            return (IEnumerable<PizzaDtoForDisplay>)pizzas;
         }
 
-        public Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaBySizeAsync(double size, bool trackChanges)
+        public async Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaBySizeAsync(double size, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var pizzaEntity = _repository.pizzaRepository.GetAllBySizeAsync(size, trackChanges);
+
+            var pizzas = _mapper.Map<PizzaDtoForDisplay>(pizzaEntity);
+            return (IEnumerable<PizzaDtoForDisplay>)pizzas;
         }
 
-        public Task<PizzaDtoForDisplay> GetPizzaById(int id, bool trackChanges)
+        public async Task<PizzaDtoForDisplay> GetPizzaById(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var pizzaEntity = _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
+            var pizzaToReturn = _mapper.Map<PizzaDtoForDisplay>(pizzaEntity);
+
+            return pizzaToReturn;
+        }
+
+        public async void UpdatePizza(int id, PizzaDtoForUpdate pizza, bool trackChanges)
+        {
+            var pizzaEntity = await _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
+            var pizzaDto = _mapper.Map<Pizza>(pizzaEntity);
+            pizzaEntity.ModifiedBy = pizzaDto.ModifiedBy;
+
+            await _repository.SaveAsync();
         }
 
         public void UpdatePizza(int id, PizzaDtoForUpdate pizza)
