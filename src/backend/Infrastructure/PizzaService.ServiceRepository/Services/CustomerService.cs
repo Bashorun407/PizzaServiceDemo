@@ -71,15 +71,19 @@ namespace PizzaService.ServiceRepository.Services
             return customerDisplay;
         }
 
-        public async Task<CustomerDtoForDisplay> UpdateCustomer(string phoneNumber, CustomerDtoForUpdate customer, bool trackChanges)
+        public async Task UpdateCustomer(string phoneNumber, CustomerDtoForUpdate customer, bool trackChanges)
         {
+            
             var customerDetail = await _repository.customerRepository.GetByPhoneNumberAsync(phoneNumber, trackChanges);
+            /*
             customerDetail.Customer_PhoneNumber = customer.Customer_PhoneNumber;
             customerDetail.Customer_Email= customer.Customer_Email;
             customerDetail.Customer_Address= customer.Customer_Address;
+            */
 
-            CustomerDtoForDisplay customerDisplay = _mapper.Map<CustomerDtoForDisplay>(customerDetail);
-            return customerDisplay;
+
+             _mapper.Map(customerDetail, customer);
+           await _repository.SaveAsync();
         }
 
 

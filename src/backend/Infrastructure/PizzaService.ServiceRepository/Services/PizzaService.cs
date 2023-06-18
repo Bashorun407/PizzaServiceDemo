@@ -68,9 +68,10 @@ namespace PizzaService.ServiceRepository.Services
         public async void UpdatePizza(int id, PizzaDtoForUpdate pizza, bool trackChanges)
         {
             var pizzaEntity = await _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
-            var pizzaDto = _mapper.Map<Pizza>(pizzaEntity);
-            pizzaEntity.ModifiedBy = pizzaDto.ModifiedBy;
+            //var pizzaDto = _mapper.Map<Pizza>(pizzaEntity);
+            //pizzaEntity.ModifiedBy = pizzaDto.ModifiedBy;
 
+            _mapper.Map(pizzaEntity, pizza);
             await _repository.SaveAsync();
         }
 

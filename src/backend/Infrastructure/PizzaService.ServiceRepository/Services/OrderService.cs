@@ -70,8 +70,10 @@ namespace PizzaService.ServiceRepository.Services
         public async void UpdateOrder(int id, OrderDtoForDisplay order, bool trackChanges)
         {
             var orderEntity = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
-            var orderDto = _mapper.Map<Order>(order);
-            orderEntity.ModifiedBy = orderDto.ModifiedBy;
+            //var orderDto = _mapper.Map<Order>(order);
+
+            _mapper.Map(orderEntity, order);
+            //orderEntity.ModifiedBy = orderDto.ModifiedBy;
 
            await _repository.SaveAsync();
 
