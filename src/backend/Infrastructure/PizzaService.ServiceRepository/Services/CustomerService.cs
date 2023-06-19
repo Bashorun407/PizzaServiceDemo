@@ -42,6 +42,7 @@ namespace PizzaService.ServiceRepository.Services
         {
             var customerDelete = await _repository.customerRepository.GetByIdAsync(id, trackChanges);
             _repository.customerRepository.DeleteCustomer(customerDelete);
+            await _repository.SaveAsync();
 
         }
 
@@ -68,6 +69,7 @@ namespace PizzaService.ServiceRepository.Services
             CustomerDetail.Customer_Address = customer.Customer_Address;
 
             var customerDisplay = _mapper.Map<CustomerDtoForDisplay>(CustomerDetail);
+            await _repository.SaveAsync();
             return customerDisplay;
         }
 
@@ -82,7 +84,7 @@ namespace PizzaService.ServiceRepository.Services
             */
 
 
-             _mapper.Map(customerDetail, customer);
+             _mapper.Map(customer, customerDetail);
            await _repository.SaveAsync();
         }
 

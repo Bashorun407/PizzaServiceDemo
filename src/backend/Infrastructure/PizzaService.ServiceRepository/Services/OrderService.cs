@@ -29,7 +29,7 @@ namespace PizzaService.ServiceRepository.Services
         {
             var orderDetails = _mapper.Map<Order>(order);
             _repository.orderRepository.CreateOrder(orderDetails);
-            _repository.SaveAsync();
+           await _repository.SaveAsync();
 
             var orderToReturn = _mapper.Map<OrderDtoForDisplay>(orderDetails);
             return orderToReturn;
@@ -40,12 +40,13 @@ namespace PizzaService.ServiceRepository.Services
             var orderToDelete = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
 
             _repository.orderRepository.DeleteOrder(orderToDelete);
+           await _repository.SaveAsync();
             
         }
 
         public async Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersAsync(bool trackChanges)
         {
-            var orderEntity = _repository.orderRepository.GetAllAsync(trackChanges);
+            var orderEntity = await _repository.orderRepository.GetAllAsync(trackChanges);
 
             var orders = _mapper.Map<OrderDtoForDisplay>(orderEntity);
             return (IEnumerable<OrderDtoForDisplay>) orders;
@@ -53,15 +54,15 @@ namespace PizzaService.ServiceRepository.Services
 
         public async Task<IEnumerable<OrderDtoForDisplay>> GetAllOrdersByDate(DateTime date, bool trackChanges)
         {
-            var orderEntity = _repository.orderRepository.GetByOrderDateAsync(date, trackChanges);
+            var orderEntity = await _repository.orderRepository.GetByOrderDateAsync(date, trackChanges);
 
             var orders = _mapper.Map<OrderDtoForDisplay>(orderEntity);
             return (IEnumerable<OrderDtoForDisplay>)orders;
         }
-
+         
         public async Task<OrderDtoForDisplay> GetOrderByIdAsync(int id, bool trackChanges)
         {
-            var orderEntity = _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
+            var orderEntity = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
             var orderToReturn = _mapper.Map<OrderDtoForDisplay>(orderEntity);
 
             return orderToReturn;
@@ -72,7 +73,7 @@ namespace PizzaService.ServiceRepository.Services
             var orderEntity = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
             //var orderDto = _mapper.Map<Order>(order);
 
-            _mapper.Map(orderEntity, order);
+            _mapper.Map(order, orderEntity);
             //orderEntity.ModifiedBy = orderDto.ModifiedBy;
 
            await _repository.SaveAsync();

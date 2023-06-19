@@ -28,7 +28,7 @@ namespace PizzaService.ServiceRepository.Services
         {
             var pizzaDetails = _mapper.Map<Pizza>(pizza);
             _repository.pizzaRepository.CreatePizza(pizzaDetails);
-            _repository.SaveAsync();
+           await _repository.SaveAsync();
 
             var pizzaToReturn = _mapper.Map<PizzaDtoForDisplay>(pizzaDetails);
             return pizzaToReturn;
@@ -39,6 +39,7 @@ namespace PizzaService.ServiceRepository.Services
             var pizzaToDelete = await _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
 
             _repository.pizzaRepository.DeletePizza(pizzaToDelete);
+            await _repository.SaveAsync();
         }
 
         public async Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaAsync(bool trackChanges)
@@ -59,7 +60,7 @@ namespace PizzaService.ServiceRepository.Services
 
         public async Task<PizzaDtoForDisplay> GetPizzaById(int id, bool trackChanges)
         {
-            var pizzaEntity = _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
+            var pizzaEntity = await _repository.pizzaRepository.GetByIdAsync(id, trackChanges);
             var pizzaToReturn = _mapper.Map<PizzaDtoForDisplay>(pizzaEntity);
 
             return pizzaToReturn;
@@ -71,7 +72,7 @@ namespace PizzaService.ServiceRepository.Services
             //var pizzaDto = _mapper.Map<Pizza>(pizzaEntity);
             //pizzaEntity.ModifiedBy = pizzaDto.ModifiedBy;
 
-            _mapper.Map(pizzaEntity, pizza);
+            _mapper.Map(pizza, pizzaEntity);
             await _repository.SaveAsync();
         }
 
