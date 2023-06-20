@@ -1,6 +1,8 @@
 ﻿using LoggerService;
+using Microsoft.EntityFrameworkCore;
 using PizzaService.Application.Common;
 using PizzaService.Persistence.Common;
+using PizzaService.ServiceContracts.Common;
 
 namespace PizzaService.WebApi.Extensions
 {
@@ -30,6 +32,17 @@ namespace PizzaService.WebApi.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+        }
+
+        public static void ConfigureServiceManager(this IServiceCollection services)
+        {
+            services.AddScoped<IServiceManager, IServiceManager>();
+        }
+
+        public static void ConfigureSQLContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<RepositoryContext>(opt =>
+                    opt.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
         }
     }
 }

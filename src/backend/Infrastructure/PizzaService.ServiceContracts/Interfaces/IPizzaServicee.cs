@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PizzaService.ServiceContracts.Interfaces
 {
-    public interface IPizzaService
+    public interface IPizzaServicee
     {
         Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaAsync(bool trackChanges);
         Task<IEnumerable<PizzaDtoForDisplay>> GetAllPizzaBySizeAsync(double size, bool trackChanges);

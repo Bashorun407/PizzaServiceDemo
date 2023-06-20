@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace PizzaService.ServiceRepository.Services
 {
-    internal sealed class PizzaService : IPizzaService
+    internal sealed class PizzaServicee : IPizzaServicee
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public PizzaService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        public PizzaServicee(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
