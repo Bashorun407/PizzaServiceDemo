@@ -68,7 +68,7 @@ namespace PizzaService.ServiceRepository.Services
             return orderToReturn;
         }
 
-        public async void UpdateOrder(int id, OrderDtoForDisplay order, bool trackChanges)
+        public async void UpdateOrder(int id, OrderDtoForUpdate order, bool trackChanges)
         {
             var orderEntity = await _repository.orderRepository.GetByOrderIdAsync(id, trackChanges);
             //var orderDto = _mapper.Map<Order>(order);
@@ -80,7 +80,7 @@ namespace PizzaService.ServiceRepository.Services
 
         }
 
-        public void UpdateOrder(int id, OrderDtoForDisplay order)
+        public void UpdateOrder(int id, OrderDtoForUpdate order)
         {
             throw new NotImplementedException();
         }
